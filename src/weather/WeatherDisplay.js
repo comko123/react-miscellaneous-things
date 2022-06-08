@@ -8,7 +8,7 @@ export default function Display(props){
     <h1>습도:{humidity}</h1>
     <h1>온도:{Math.round(temp)}</h1>
     {weather.map(R=>{return(
-        <div key={R.id}>
+    <div key={R.id}>
     <h1 >{R.main}</h1>
     <h1 >{R.description}</h1>
     </div>
