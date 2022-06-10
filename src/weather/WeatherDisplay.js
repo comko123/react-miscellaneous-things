@@ -1,15 +1,14 @@
 export default function Display(props){
+        const dateValue = new Date()
         const value = new Date(props.dt*1000)
         const {humidity,temp,weather} = props
-       const dateValue = new Date()
-       console.log(dateValue.getDate()===value.getDate()?"1":"2")
      
     return(
     <>
     {dateValue.getDate()!==value.getDate()?null:
       value.getHours() ===10 
     ||value.getHours() ===16 
-    ||value.getHours() === 20 
+    ||value.getHours() ===20 
     ||value.getHours() ===23 ?
      <>
      <br/>

@@ -27,9 +27,6 @@ setUserWeather((await
     axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${adress.latitude}&lon=${adress.longitude}&appid=f980d31253eb2b185606cca64544373f&units=metric`))
 .data.hourly)
 setLoading(false);    
-console.log((await 
-  axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${adress.latitude}&lon=${adress.longitude}&appid=f980d31253eb2b185606cca64544373f&units=metric`))
-.data.hourly)
 }
 
     return(<>{loading?
