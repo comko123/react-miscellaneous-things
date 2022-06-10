@@ -27,7 +27,11 @@ setUserWeather((await
     axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${adress.latitude}&lon=${adress.longitude}&appid=f980d31253eb2b185606cca64544373f&units=metric`))
 .data.hourly)
 setLoading(false);    
+console.log((await 
+  axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${adress.latitude}&lon=${adress.longitude}&appid=f980d31253eb2b185606cca64544373f&units=metric`))
+.data.hourly)
 }
+
     return(<>{loading?
     <>
     <h1>loading.....</h1>
@@ -35,13 +39,14 @@ setLoading(false);
     </>
     :<> 
     <h1>clear weather</h1>
-        {userWeather.map((R)=><WeatherDisplay 
+        {userWeather.map((R)=>{
+        return<WeatherDisplay 
         key={R.dt} 
         dt={R.dt} 
         humidity={R.humidity}
         temp={R.temp}
         weather={R.weather}
-        />)}
+        />})}
 
     </>}
    
