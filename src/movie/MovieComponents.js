@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-const  MovieComponents = ()=>{
+export default function  MovieComponents(){
  const [data,setData] = useState({});
  const [loding,setLoding]= useState(true);
  const movieData = async()=>{
@@ -18,4 +18,3 @@ const  MovieComponents = ()=>{
     </div>}
     </>)
 }
-export default MovieComponents;
