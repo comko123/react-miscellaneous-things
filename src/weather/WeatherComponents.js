@@ -9,6 +9,7 @@ export default function WeatherComponents(){
         if (navigator.geolocation) { // GPS를 지원하면
           navigator.geolocation.getCurrentPosition((position) => {
               //console.log(position)
+               //console.log(navigator)
             setAdress(position.coords)
           },(error) => {
             console.error(error);
