@@ -5,6 +5,7 @@ export default function WeatherComponents(){
     const [adress,setAdress] = useState({})
     const [userWeather,setUserWeather] = useState([])
     const [loading,setLoading] = useState(true);
+    const [outerClothing,setOuterClothing] =useState(false)
     const getLocation = () => {
         if (navigator.geolocation) { // GPS를 지원하면
           navigator.geolocation.getCurrentPosition((position) => {
