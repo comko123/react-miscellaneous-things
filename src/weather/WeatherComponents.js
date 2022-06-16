@@ -58,7 +58,7 @@ setLoading(false);
           const colddata = Math.min.apply(null,data)
           if(hotdata>23||colddata<12){setOuterClothing(true)}
             else{setOuterClothing(false)}
-          console.log("당일 최고온도" ,hotdata)
+          console.log("당일 최고온도",hotdata)
           console.log("당일 최저온도",colddata)
           console.log(data)
         }}
