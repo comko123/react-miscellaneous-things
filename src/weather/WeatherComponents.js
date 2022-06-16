@@ -54,11 +54,16 @@ setLoading(false);
           return dateValue.getDate()!==value.getDate()?
           null:R.temp })
           const data = array.filter(E=>E!==null)
-          console.log("당일 최고온도" ,Math.max.apply(null,data))
-          console.log("당일 최저온도",Math.min.apply(null,data))
+          const hotdata = Math.max.apply(null,data)
+          const colddata = Math.min.apply(null,data)
+          if(hotdata>23||colddata<12){setOuterClothing(true)}
+            else{setOuterClothing(false)}
+          console.log("당일 최고온도" ,hotdata)
+          console.log("당일 최저온도",colddata)
           console.log(data)
         }}
         >click</button>
+        {console.log(outerClothing)}
     </>}  
     </>)
 }
