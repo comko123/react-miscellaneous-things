@@ -48,7 +48,7 @@ setLoading(false);
         />})}
 <button onClick={()=>{
         const dateValue = new Date()
-        const  array =
+        const  array = 
         userWeather.map((R)=>{ 
           const value = new Date(R.dt*1000); 
           return dateValue.getDate()!==value.getDate()?
