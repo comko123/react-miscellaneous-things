@@ -61,6 +61,7 @@ setLoading(false);
           console.log("당일 최고온도",hotdata)
           console.log("당일 최저온도",colddata)
           console.log(data)
+          //새로운 컴포넌트 생성후 로직추가 
         }}
         >click</button>
         {console.log(outerClothing)}
