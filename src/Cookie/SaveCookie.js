@@ -13,10 +13,9 @@ export default function SaveCookie(){
     )
     // cookies 데이터 가져오기
     console.log(cookies.load('userid')); // coadingHospital
-
     return(<> <p>react-cookies Save</p>
-                   <button onClick={()=>{console.log(cookies.load('userid'))
-                                                                  
-                                        }}>click</button>
+                   <button onClick={()=>{console.log(cookies.load('userid'))}}>click</button>
+                   <br/>
+                   <button  onClick={()=>{cookies.remove('userid');return console.log("delete")}}>delete</button>
                     </>)
 }

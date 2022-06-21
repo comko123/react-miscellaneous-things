@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect ,useState } from "react";
+import WeatherAlgorithm from "./WeatherAlgorithm";
 import WeatherDisplay from "./WeatherDisplay";
 export default function WeatherComponents(){
     const [adress,setAdress] = useState({})
@@ -18,13 +19,15 @@ export default function WeatherComponents(){
           null:R.temp })
           const data = array.filter(E=>E!==null)
           const hotdata = Math.max.apply(null,data)
+          setHighTemp(hotdata)
           const colddata = Math.min.apply(null,data)
+          setLowTemp(colddata)
+          setLoading(false)
           if(hotdata>23||colddata<12){setOuterClothing(true)}
             else{setOuterClothing(false)}
           console.log("당일 최고온도",hotdata)
           console.log("당일 최저온도",colddata)
-          console.log(data)
-          
+          console.log(data) 
     }
 
     const getLocation = () => {
@@ -50,12 +53,12 @@ export default function WeatherComponents(){
 setUserWeather((await 
     axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${adress.latitude}&lon=${adress.longitude}&appid=f980d31253eb2b185606cca64544373f&units=metric`))
 .data.hourly)
-setLoading(false);  
       }
+      inputWeather()
     return(<>{loading?
     <>
     <h1>loading.....</h1>
-    <button onClick={inputWeather}>click</button>
+    <button onClick={ClickEvent}>click</button>
     </>
     :<> 
     <h1>Today weathers</h1>
@@ -67,8 +70,7 @@ setLoading(false);
         temp={R.temp}
         weather={R.weather}
         />})}
-<button onClick={ClickEvent}>click</button>
-        {console.log(outerClothing)}
+       <WeatherAlgorithm Htemp = {highTemp} Mtemp={lowTemp} outp = {outerClothing}/>
     </>}  
     </>)
 }
