@@ -5,7 +5,28 @@ export default function WeatherComponents(){
     const [adress,setAdress] = useState({})
     const [userWeather,setUserWeather] = useState([])
     const [loading,setLoading] = useState(true);
+    const [highTemp,setHighTemp] = useState(0) 
+    const [lowTemp,setLowTemp] = useState(0)     
     const [outerClothing,setOuterClothing] =useState(false)
+
+    const ClickEvent = () => {
+      const dateValue = new Date()
+        const  array = 
+        userWeather.map((R)=>{ 
+          const value = new Date(R.dt*1000); 
+          return dateValue.getDate()!==value.getDate()?
+          null:R.temp })
+          const data = array.filter(E=>E!==null)
+          const hotdata = Math.max.apply(null,data)
+          const colddata = Math.min.apply(null,data)
+          if(hotdata>23||colddata<12){setOuterClothing(true)}
+            else{setOuterClothing(false)}
+          console.log("당일 최고온도",hotdata)
+          console.log("당일 최저온도",colddata)
+          console.log(data)
+          
+    }
+
     const getLocation = () => {
         if (navigator.geolocation) { // GPS를 지원하면
           navigator.geolocation.getCurrentPosition((position) => {
@@ -46,24 +67,7 @@ setLoading(false);
         temp={R.temp}
         weather={R.weather}
         />})}
-<button onClick={()=>{
-        const dateValue = new Date()
-        const  array = 
-        userWeather.map((R)=>{ 
-          const value = new Date(R.dt*1000); 
-          return dateValue.getDate()!==value.getDate()?
-          null:R.temp })
-          const data = array.filter(E=>E!==null)
-          const hotdata = Math.max.apply(null,data)
-          const colddata = Math.min.apply(null,data)
-          if(hotdata>23||colddata<12){setOuterClothing(true)}
-            else{setOuterClothing(false)}
-          console.log("당일 최고온도",hotdata)
-          console.log("당일 최저온도",colddata)
-          console.log(data)
-          //새로운 컴포넌트 생성후 로직추가 
-        }}
-        >click</button>
+<button onClick={ClickEvent}>click</button>
         {console.log(outerClothing)}
     </>}  
     </>)
