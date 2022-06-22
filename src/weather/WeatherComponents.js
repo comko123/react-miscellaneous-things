@@ -62,6 +62,7 @@ useEffect(()=>{getLocation()},[])
               null:R.weather.map((K)=>K.main) })
               const rainData = rainning.filter(E=>E!==null)
           console.log(data) 
+          console.log(rainData)
           console.log(rainData.map(Y=>Y==="Rain"?true:false))
     }
     
