@@ -1,6 +1,10 @@
 import cookies from 'react-cookies';
+import {useRef} from 'react';
 export default function SaveCookie(){
-   
+    const checked=useRef();
+    const id_value=useRef();
+    const pw_value=useRef();
+    const cb_value=useRef();
     const expires = new Date();
     expires.setFullYear(expires.getFullYear() + 10);
     cookies.save('userid', 'coadingHospital',   
@@ -12,10 +16,30 @@ export default function SaveCookie(){
                 }
     )
     // cookies 데이터 가져오기
-    console.log(cookies.load('userid')); // coadingHospital
+
+    const saveCookie = () =>{
+            cookies.save(id_value.current.value,pw_value.current.value,{ path: '/',expires,httpOnly:cb_value.current.checked})
+            console.log("done :)")
+            id_value.current.value = null
+            pw_value.current.value = null
+            cb_value.current.checked = false
+        }
     return(<> <p>react-cookies Save</p>
                    <button onClick={()=>{console.log(cookies.load('userid'))}}>click</button>
                    <br/>
                    <button  onClick={()=>{cookies.remove('userid');return console.log("delete")}}>delete</button>
+                <br/>
+                 <input type = "checkbox" ref={checked} onChange={()=>console.log(checked.current.checked)}/>
+                   <details>
+                    <summary>add to cookie</summary>
+                    <br/>
+                    <input type="text" placeholder='name' ref={id_value}/>
+                    <br/> <br/>
+                    <input type="text" placeholder='value' ref={pw_value}/>
+                    <br/> <br/>
+                    HttpOnly <input type="checkbox" ref={cb_value}/>
+                    <br/> <br/>
+                    <input type="button" value="cookie!" onClick={saveCookie}/>
+                    </details>
                     </>)
 }
