@@ -14,7 +14,7 @@ export default function InputWeather(props){
     .then(res=>res.json())
     .then(json=>{setWeatherObject(json.hourly);setLoading(false)})},[])
 
-        const RainAndTemp = () =>{
+        const RainAndTemp = () => {
             const dateValue = new Date()
             const  array = weatherObject.map((R)=>{
             const value = new Date(R.dt*1000); 
