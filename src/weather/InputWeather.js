@@ -1,3 +1,4 @@
+import axios from "axios";
 import WeatherDisplay from "./WeatherDisplay";
 import WeatherAlgorithm from "./WeatherAlgorithm";
 import { useEffect, useState } from "react"
@@ -10,9 +11,19 @@ export default function InputWeather(props){
     const [loading,setLoading] = useState(true);
     const [pageLoading,setPageLoading] = useState(true);
     const [outerClothing,setOuterClothing] =useState(false)
-    useEffect(()=>{fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=0b9dc2c29f0c437b89527b6b12e02421&units=metric`)
+    /*useEffect(()=>{fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=0b9dc2c29f0c437b89527b6b12e02421&units=metric`)
     .then(res=>res.json())
-    .then(json=>{setWeatherObject(json.hourly);setLoading(false)})},[])
+    .then(json=>{setWeatherObject(json.hourly);setLoading(false);console.log(json.hourly)})},[])*/
+
+const label =async() =>{setWeatherObject(
+    await(
+        await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=0b9dc2c29f0c437b89527b6b12e02421&units=metric`)
+).data.hourly)
+setLoading(false);
+}
+
+useEffect(()=>{label()},[])
+
 
         const RainAndTemp = () => {
             const dateValue = new Date()
