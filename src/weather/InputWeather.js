@@ -2,7 +2,7 @@ import axios from "axios";
 import TodayWeather from "./TodayWeather";
 import WeatherDisplay from "./WeatherDisplay";
 import WeatherAlgorithm from "./WeatherAlgorithm";
-import { useEffect, useState } from "react"
+import { useMemo, useState } from "react"
 export default function InputWeather(props){
     const  {latitude,longitude} = props
     const [weatherObject,setWeatherObject] = useState([])
@@ -19,11 +19,11 @@ setWeatherObject(
     await(
         await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=0b9dc2c29f0c437b89527b6b12e02421&units=metric`)
 ).data.hourly)
-setLoading(false);
-    }
+setLoading(false);   
+}
 }
 
-useEffect(()=>{label()},[props])
+useMemo(()=>{label()},[props])
 
         const RainAndTemp = () => {
             const dateValue = new Date()
