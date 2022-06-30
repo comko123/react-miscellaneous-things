@@ -2,7 +2,6 @@ const TimeControl = () =>{
 setTimeout(()=>{console.log("hiding")},3000)
  return (
     <>
-    
     </>
  )  
 }
