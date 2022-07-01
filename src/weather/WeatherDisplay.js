@@ -1,9 +1,7 @@
-export default function Display(props){
+export default function Display({humidity,temp,weather,dt}){
         const dateValue = new Date()
-        const value = new Date(props.dt*1000)
-        const {humidity,temp,weather} = props
-       //console.log(props)
-      
+        const value = new Date(dt*1000)
+       
     return(
     <>
     {dateValue.getDate()!==value.getDate()?null:

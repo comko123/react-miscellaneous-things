@@ -1,5 +1,5 @@
-import { useEffect ,useState } from "react";
-import InputWeather from "./InputWeather";
+import { useState } from "react";
+import TodayWeather from "./TodayWeather";
 export default function WeatherComponents(){
     const [latitude,setLatitude] = useState(0)
     const [longitude,setLongitude]=useState(0)
@@ -22,7 +22,7 @@ export default function WeatherComponents(){
 getLocation()   
 
     return(<>
-       <InputWeather latitude={latitude!==0?latitude:0} longitude = {longitude!==0?longitude:0}/>
+       <TodayWeather latitude={latitude} longitude = {longitude}/>
     </>  
     )
 }
