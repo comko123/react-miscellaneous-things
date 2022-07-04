@@ -33,9 +33,9 @@ todayWeather()
 },[todayLocation])
     
         const RainAndTemp = () => {
-            const dateValue = new Date()
+            let dateValue = new Date()
             const  array = weatherObject.map((R)=>{
-            const value = new Date(R.dt*1000); 
+        let value = new Date(R.dt*1000); 
             return dateValue.getDate()!==value.getDate()?
           null:R.temp })
           const data = array.filter(E=>E!==null)
@@ -49,7 +49,7 @@ todayWeather()
 
          const rainning =  
          weatherObject.map((R)=>{ 
-           const value = new Date(R.dt*1000); 
+        let value = new Date(R.dt*1000); 
            return dateValue.getDate()!==value.getDate()?
            null:R.rain??null })
            const rainData = rainning.filter(E=>E!==null)
