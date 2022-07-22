@@ -8,7 +8,7 @@ export default function  MovieComponents(){
      setLoding(false)
     }
     useEffect(()=>{ movieData();},[])
-       
+    console.log(data)
     return(<>
     {loding?<h1>Loading.....</h1>
     :

@@ -33,9 +33,9 @@ todayWeather()
 },[todayLocation])
     
         const RainAndTemp = () => {
-            let dateValue = new Date()
+            const dateValue = new Date()
             const  array = weatherObject.map((R)=>{
-        let value = new Date(R.dt*1000); 
+        const value = new Date(R.dt*1000); 
             return dateValue.getDate()!==value.getDate()?
           null:R.temp })
           const data = array.filter(E=>E!==null)
@@ -43,18 +43,16 @@ todayWeather()
           const colddata = Math.min.apply(null,data)
           setHighTemp(hotdata)
           setLowTemp(colddata)
-          setPageLoading(false)
-         if(colddata<=12||hotdata>=23){setOuterClothing(true)}
-        else{setOuterClothing(false)}
+          setPageLoading(false);
+        (colddata<=12||hotdata>=23)?setOuterClothing(true):setOuterClothing(false)
 
          const rainning =  
          weatherObject.map((R)=>{ 
-        let value = new Date(R.dt*1000); 
+        const value = new Date(R.dt*1000); 
            return dateValue.getDate()!==value.getDate()?
            null:R.rain??null })
-           const rainData = rainning.filter(E=>E!==null)
-           if(rainData.length!==0){setRainData(true)}
-           else(setRainData(false)) 
+           const rainData = rainning.filter(E=>E!==null);
+           (rainData.length!==0)?setRainData(true):setRainData(false) 
         }
         
     return (<>{loading?
